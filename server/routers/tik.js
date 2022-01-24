@@ -11,10 +11,10 @@ async function getVideo(URL) {
     await page.type('#link_url', `${URL}`)
     await page.click('#submit-form > div > div:nth-child(2) > button', {delay: 300})
 
-    await page.waitForSelector("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l4 > img")
-    let img = await page.$eval("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l4 > img", (element) => {
-        return element.getAttribute("src")
-    })
+//     await page.waitForSelector("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l4 > img")
+//     let img = await page.$eval("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l4 > img", (element) => {
+//         return element.getAttribute("src")
+//     })
     await page.waitForSelector("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(4)")
     let mp4server1 = await page.$eval("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(4)", (element) => {
         return element.getAttribute("href")
