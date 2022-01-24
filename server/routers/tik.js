@@ -3,7 +3,7 @@ const purppeteer = require("puppeteer");
 
 async function getVideo(URL) {
     const browser = await purppeteer.launch({
-        headless: false,
+        headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     })
     const page = await browser.newPage()
