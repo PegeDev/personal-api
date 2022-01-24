@@ -15,15 +15,15 @@ async function getVideo(URL) {
 //     let img = await page.$eval("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l4 > img", (element) => {
 //         return element.getAttribute("src")
 //     })
-    await page.waitForSelector("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(4)")
-    let mp4server1 = await page.$eval("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(4)", (element) => {
-        return element.getAttribute("href")
-    })
+//     await page.waitForSelector("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(4)")
+//     let mp4server1 = await page.$eval("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(4)", (element) => {
+//         return element.getAttribute("href")
+//     })
     await page.waitForSelector("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(6)")
     let mp4server2 = await page.$eval("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(6)", (element) => {
         return element.getAttribute("href")
     })
-    return {mp4server1,mp4server2, img}
+    return {mp4server2}
     
 }
 
