@@ -28,9 +28,14 @@ async function getVideo(URL) {
 }
 
 tiktok.get('/', async (req, res) => {
-    var URL = req.query.URL;
-    const gets = await getVideo(URL);
-    res.json(gets)
+    try {
+        var URL = req.query.URL;
+        const gets = await getVideo(URL);
+        res.json(gets)
+    } catch (err) {
+        console.log(err)
+    }
+    
 });
 
 module.exports = tiktok;
