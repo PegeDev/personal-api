@@ -1,5 +1,5 @@
 const tiktok = require('express').Router();
-const puppeteer = require("puppeteer");
+const purppeteer = require("puppeteer");
 
 async function getVideo(URL) {
     const browser = await purppeteer.launch({
