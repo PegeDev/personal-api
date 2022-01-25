@@ -7,23 +7,25 @@ async function getVideo(URL) {
         args: ['--no-sandbox', '--disable-setuid-sandbox']
     })
     const page = await browser.newPage()
-    await page.goto("https://musicaldown.com/")
-    await page.type('#link_url', `${URL}`)
-    await page.click('#submit-form > div > div:nth-child(2) > button', {delay: 300})
+    await page.goto("https://snaptik.app/en")
+    await page.type("#url", `${URL}`)
+    await page.click("#submiturl", {delay: 300})
 
-     await page.waitForSelector("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l4 > img")
-    let img = await page.$eval("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l4 > img", (element) => {
-        return element.getAttribute("src")
+    await page.waitForSelector("#snaptik-video > article > div.snaptik-left > img")
+    let img = await page.$eval("#snaptik-video > article > div.snaptik-left > img", (el) => {
+        return el.getAttribute("src")
     })
-    await page.waitForSelector("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(4)")
-    let mp4server1 = await page.$eval("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(4)", (element) => {
-        return element.getAttribute("href")
+    
+    let author = await page.$eval("#snaptik-video > article > div.snaptik-middle.center > h3", el => el.innerText)
+    
+    let caption = await page.$eval("#snaptik-video > article > div.snaptik-middle.center > p:nth-child(2) > span", el => el.innerText)
+
+    await page.waitForSelector("#download-block > div > a:nth-child(1)")
+    let mp4 = await page.$eval("#download-block > div > a:nth-child(1)", (el) => {
+        return el.getAttribute("href")
     })
-    await page.waitForSelector("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(6)")
-    let mp4server2 = await page.$eval("body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(6)", (element) => {
-        return element.getAttribute("href")
-    })
-    return {mp4server2}
+    
+    return {mp4, author, img, caption}
     
 }
 
