@@ -8,9 +8,8 @@ var app = express();
 const PORT = process.env.PORT || 80;
 const cors = require("cors")
 
-app.use(cors())
-// app.use(morgan('dev'));
-// app.use(express.static('client'));
+app.use(morgan('dev'));
+app.use(express.static('client'));
 
 
 // Enable CORS on ExpressJS to avoid cross-origin errors when calling this server using AJAX
