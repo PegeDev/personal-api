@@ -8,7 +8,9 @@ var app = express();
 const PORT = process.env.PORT || 80;
 const cors = require("cors")
 
-app.use(cors());
+app.use(cors({
+    origin:"*",
+    }));
 app.use(morgan('dev'));
 app.use(express.static('client'));
 
