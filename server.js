@@ -7,7 +7,6 @@ var tiktok = require('./server/routers/tik');
 var app = express();
 const PORT = process.env.PORT || 80;
 const cors = require("cors")
-
 app.use(morgan('dev'));
 app.use(express.static('client'));
 
